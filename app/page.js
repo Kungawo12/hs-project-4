@@ -5,7 +5,7 @@ import Image from "next/image";
 import getStripe from "@/utils/get-stripe";
 import Link from "next/link";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
-import { AppBar, Button, Container, Toolbar, Typography,Box,Grid} from "@mui/material";
+import { AppBar, Button, Container, Toolbar, Typography,Box,Grid,Paper} from "@mui/material";
 import Head from "next/head";
 import { useUser } from "@clerk/nextjs";
 import { useContext,useEffect,useState } from 'react';
@@ -90,13 +90,14 @@ export default function Home() {
         my: 4,
       }}>
         
-        <Typography variant="h2" gutterBottom>
-          Welcome to MIN Flashcard
-        </Typography>
-        <Typography variant="h5" gutterBottom>
-          {''}
-          The easiest way to create flashcard from scratch from your text
-        </Typography>
+        <Box component={Paper} elevation={3} padding={2} margin={2}>
+  <Typography variant="h2" gutterBottom>
+    Welcome to MIN Flashcard
+  </Typography>
+  <Typography variant="h5" gutterBottom>
+    To achieve great things, two things are needed; a plan, and not quite enough time
+  </Typography>
+</Box>
         <Button variant="contained" color="primary" sx = {{marginTop: 2}} onClick={handleGetStarted}>
           Get Started
         </Button>
