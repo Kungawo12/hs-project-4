@@ -98,14 +98,14 @@ export default function Home() {
     To achieve great things, two things are needed; a plan, and not quite enough time
   </Typography>
 </Box>
-        <Button variant="contained" color="primary" sx = {{marginTop: 2}} onClick={handleGetStarted}>
-          Get Started
-        </Button>
-      </Box>
-      <Box sx = {{my: 6}}>
-        <Typography variant="h4" gutterBottom>
+      <Box sx={{my: 6}}>
+      <Typography variant="h4" gutterBottom>
           Features
         </Typography>
+        </Box>
+      </Box>
+      <Box sx = {{my: 3}}>
+        
         <Grid container spacing = {4}>
           <Grid item xs={12} md={4}>
             <Typography variant="h6" gutterBottom>
@@ -161,7 +161,7 @@ export default function Home() {
                 {' '}
                 Access to basic flashcard features and limited storage.
               </Typography>
-              <Button variant="contained" color="primary" sx={{mt: 2}}>
+              <Button variant="contained" color="primary" sx={{mt: 2}} onClick={handleGetStarted}>
                 choose basic
               </Button>
               </Box>
