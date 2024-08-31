@@ -52,7 +52,7 @@ export default function Flashcards() {
         <Container maxWidth='100vw'>
             <Box sx={{display: 'flex', justifyContent: 'center', mt: 4, mb:4}}>
                 <Typography variant='h4'>
-                {user.firstName}'s Flashcards
+                {user.firstName}&apos;s Flashcards
                 </Typography>
                 <Typography variant='h6' sx={{ml:2}}><Button onClick={handleReturnToHome}>Home</Button></Typography>
             </Box>
