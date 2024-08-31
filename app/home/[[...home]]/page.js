@@ -10,7 +10,7 @@ import Head from "next/head";
 import { useUser } from "@clerk/nextjs";
 import { useContext,useEffect,useState } from 'react';
 import { useTheme } from "../../themeContext";
-import LightDark from "../../lightDarkMode";
+import LightDark from "../../LightDark";
 import { useRouter } from 'next/navigation';
 
 
