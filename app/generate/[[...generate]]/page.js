@@ -2,6 +2,8 @@
 import {useUser} from '@clerk/nextjs';
 import {db} from '@/firebase';
 import { 
+    AppBar,
+    Toolbar,
     Button,
     Typography,
     Container,
@@ -20,7 +22,8 @@ import {
 import { writeBatch,doc ,collection, setDoc, getDoc } from 'firebase/firestore';
 import { useRouter } from 'next/navigation';
 import { useState} from 'react';
-
+import LightDark from "../../LightDark";
+import { useTheme } from "../../themeContext";
 
 export default function Generate() {
     const {isloaded,isSigned,user} = useUser()
@@ -30,6 +33,8 @@ export default function Generate() {
     const [name, setName] = useState('')
     const [open, setOpen] = useState(false)
     const router = useRouter()
+    const { isLightMode } = useTheme();
+    
     
     const handleGetResult = () => {
         router.push('/flashcards');
@@ -95,6 +100,14 @@ export default function Generate() {
 
     return(
     <Container maxWidth='100%' style={{ width: '100%', padding: 0 }}>
+        <AppBar position="static">
+                <Toolbar>
+                <Typography variant="h6" style={{flexGrow:1}}>
+                    MIN Flashcard
+                </Typography>
+                <LightDark />
+                </Toolbar>
+            </AppBar>
         <Box sx={{
             mt:4, mb:6, display: 'flex', flexDirection: 'column', alignItems: 'center'
         }}  >
