@@ -5,6 +5,8 @@ import { ThemeProviderWrapper } from './themeContext';
 import LightDark from './LightDark';
 
 const inter = Inter({ subsets: ["latin"] });
+const clerkFrontendApi = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY;
+
 
 export const metadata = {
   title: "Create Next App",
@@ -13,7 +15,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <ClerkProvider>
+    <ClerkProvider frontendApi={clerkFrontendApi}>
       
     <html lang="en">
       <body className={inter.className}>
