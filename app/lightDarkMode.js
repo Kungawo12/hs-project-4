@@ -6,7 +6,7 @@ import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import NightsStayIcon from '@mui/icons-material/NightsStay';
 import { useTheme } from '../app/themeContext'; // Adjust path if needed
 
-const lightDark = () => {
+const LightDark = () => {
     const { isLightMode, setIsLightMode } = useTheme();
 
     return (
@@ -16,4 +16,4 @@ const lightDark = () => {
 );
 };
 
-export default lightDark;
+export default LightDark;

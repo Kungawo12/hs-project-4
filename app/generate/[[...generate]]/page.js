@@ -31,7 +31,9 @@ export default function Generate() {
     const [open, setOpen] = useState(false)
     const router = useRouter()
     
-
+    const handleGetResult = () => {
+        router.push('/flashcards');
+    }
     const handleSubmit = async() => {
         fetch ('api/generate',{
             method: "POST",
@@ -206,6 +208,16 @@ export default function Generate() {
                 <Button onClick={saveFlashcards}>Save</Button>
             </DialogActions>
         </Dialog>
+
+
+
+    <Box sx={{my: 6, textAlign: 'center'}}>
+        <Button variant="contained" color="primary" sx={{mt: 2}} onClick={handleGetResult} >
+        <Typography variant="h4" gutterBottom>
+            Results
+            </Typography>
+        </Button>
+    </Box>  
     </Container>
     )
     

@@ -2,6 +2,7 @@ import { SignIn } from "@clerk/nextjs";
 import { Container, AppBar, Toolbar, Typography, Button, Box } from "@mui/material"
 import Link from "next/link"
 
+
 export default function SignUpPage() {
     return (
         <Container maxWidth='100%' style={{ width: '100%', padding: 0 }}>

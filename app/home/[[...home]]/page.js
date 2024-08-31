@@ -10,8 +10,9 @@ import Head from "next/head";
 import { useUser } from "@clerk/nextjs";
 import { useContext,useEffect,useState } from 'react';
 import { useTheme } from "../../themeContext";
-import ThemeToggle from "../../lightDarkMode";
+import LightDark from "../../lightDarkMode";
 import { useRouter } from 'next/navigation';
+
 
 export default function Home() {
   const { isLightMode } = useTheme();
@@ -56,7 +57,10 @@ export default function Home() {
     if (error){
       console.warn(error.message)
     }
-  }
+    else {
+      router.push(`/result?session_id=${checkoutSessionJson.id}`);
+    }
+}
 
   return(
     <Container maxWidth='100%' style={{ width: '100%', padding: 0 }}>
@@ -72,7 +76,7 @@ export default function Home() {
             MIN Flashcard
           </Typography>
           
-          <ThemeToggle />
+          <LightDark />
           
           <SignedOut>
             <Button color="inherit" href="/sign-in">Login</Button>
@@ -105,7 +109,6 @@ export default function Home() {
         </Box>
       </Box>
       <Box sx = {{my: 3}}>
-        
         <Grid container spacing = {4}>
           <Grid item xs={12} md={4}>
             <Typography variant="h6" gutterBottom>
