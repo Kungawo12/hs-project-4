@@ -5,10 +5,8 @@ import { AppBar, Button, Container, Toolbar, Typography,Box,Grid,Paper} from "@m
 import { useTheme } from "./themeContext";
 import Head from "next/head";
 import { useRouter } from 'next/navigation';
-import LightDark from "./lightDarkMode";
 
 export default function Home() {
-    const { isLightMode } = useTheme();
     const router = useRouter();
 
     const handleGetStarted = () => {
@@ -28,7 +26,7 @@ export default function Home() {
                 <Typography variant="h6" style={{flexGrow:1}}>
                     MIN Flashcard
                 </Typography>
-                <LightDark/>
+
                 </Toolbar>
             </AppBar>
             <Box position="relative" height={700}>

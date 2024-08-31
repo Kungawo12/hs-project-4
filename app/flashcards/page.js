@@ -4,7 +4,7 @@ import {useUser} from '@clerk/nextjs';
 import { use,useEffect, useState } from 'react';
 import { collection,doc, getDoc, setDoc } from 'firebase/firestore';
 import { db } from '@/firebase';
-import { Card,Grid,Typography,CardActionArea, CardContent, Container ,Box} from '@mui/material';
+import { Card,Grid,Typography,CardActionArea, CardContent, Container ,Box, Button} from '@mui/material';
 import { useRouter } from 'next/navigation';
 
 export default function Flashcards() {
@@ -40,6 +40,9 @@ export default function Flashcards() {
     if (!isLoaded || !isSignedIn){
         return <></>
     }
+    const handleReturnToHome = () =>{
+        router.push('/home')
+    }
     const handleCardClick = (id) => {
         router.push(`/flashcard?id=${id}`)
     }
@@ -51,7 +54,9 @@ export default function Flashcards() {
                 <Typography variant='h4'>
                 {user.firstName}'s Flashcards
                 </Typography>
+                <Typography variant='h6' sx={{ml:2}}><Button onClick={handleReturnToHome}>Home</Button></Typography>
             </Box>
+            
             <Grid container spacing={3} sx={{met:4}}>
                 {flashcards.map((flashcard, index) => (
                     <Grid item xs={12} sm={6} md={4} key={index}>
