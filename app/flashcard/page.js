@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { collection, doc, getDoc, getDocs} from 'firebase/firestore';
 import { db } from '@/firebase';
 import { useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { 
     Button,
     Typography,
@@ -28,6 +29,7 @@ export default function Flashcard() {
 
     const searchParams = useSearchParams()
     const search = searchParams.get('id')
+    const router = useRouter()
 
     useEffect(() => {
         async function getFlashcard(){
@@ -40,6 +42,7 @@ export default function Flashcard() {
                 flashcards.push({id: doc.id, ...doc.data()})
             })
             setFlashcards(flashcards)
+            console.log(flashcards)
         }
         getFlashcard()
     }, [user, search])
@@ -50,6 +53,9 @@ export default function Flashcard() {
             [id]: !prev[id]
         }))
     }
+    const returnToFlashcard = () => {
+        router.push(`/flashcards`)
+    }
 
     if (!isLoaded || !isSignedIn){
         return <></>
@@ -57,6 +63,17 @@ export default function Flashcard() {
 
     return (
         <Container maxWidth='100vw'>
+            <Box sx={{display: 'flex', justifyContent: 'center', mt: 4, mb:4}}>
+                <Typography variant='h4'  sx={{ textTransform: 'capitalize', fontWeight: 'bold' }}>
+                {search || 'Flashcard'}
+                </Typography>
+                <Button 
+                    variant='contained' 
+                    color='primary' 
+                    sx={{ml: 2}}
+                    onClick={() => returnToFlashcard()}>  BACK
+                    </Button>
+            </Box>
             <Grid container spacing={3} sx={{mt:4}}>
             {flashcards.map((flashcard, index)=>(
                     <Grid item xs = {12} sm={6} md={4} key= {index}>
@@ -87,7 +104,11 @@ export default function Flashcard() {
                                             padding: 2,
                                             boxSizing: 'border-box',
                                         },
+                                        '& >div > div:nth-of-type(1)': {
+                                            backgroundColor: 'blue',
+                                        },
                                         '& >div > div:nth-of-type(2)': {
+                                            backgroundColor: 'green',
                                             transform: 'rotateY(180deg)',
                                         },
                                     }}>
@@ -95,14 +116,16 @@ export default function Flashcard() {
                                             <div>
                                                 <Typography
                                                 variant="h5"
-                                                component="div">
+                                                component="div"
+                                                sx={{ color: 'white' }}>
                                                     {flashcard.front}
                                                 </Typography>
                                             </div>
                                             <div>
                                                 <Typography
                                                 variant="h5"
-                                                component="div">
+                                                component="div"
+                                                sx={{ color: 'white' }}>
                                                     {flashcard.back}
                                                 </Typography>
                                             </div>

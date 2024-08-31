@@ -4,11 +4,11 @@ import {useUser} from '@clerk/nextjs';
 import { use,useEffect, useState } from 'react';
 import { collection,doc, getDoc, setDoc } from 'firebase/firestore';
 import { db } from '@/firebase';
-import { Card,Grid,Typography,CardActionArea, CardContent, Container } from '@mui/material';
+import { Card,Grid,Typography,CardActionArea, CardContent, Container ,Box} from '@mui/material';
 import { useRouter } from 'next/navigation';
 
 export default function Flashcards() {
-    const { isLoaded, isSignedIn, user} = useUser();
+    const { isLoaded, isSignedIn, user, loading} = useUser();
     const [flashcards, setFlashcards] = useState([]);
     const router = useRouter();
     
@@ -28,6 +28,14 @@ export default function Flashcards() {
         }
         getFlashcards()
     }, [user])
+    
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+    
+    if (!isLoaded || !isSignedIn){
+        return <></>
+    }
 
     if (!isLoaded || !isSignedIn){
         return <></>
@@ -39,6 +47,11 @@ export default function Flashcards() {
 
     return (
         <Container maxWidth='100vw'>
+            <Box sx={{display: 'flex', justifyContent: 'center', mt: 4, mb:4}}>
+                <Typography variant='h4'>
+                {user.firstName}'s Flashcards
+                </Typography>
+            </Box>
             <Grid container spacing={3} sx={{met:4}}>
                 {flashcards.map((flashcard, index) => (
                     <Grid item xs={12} sm={6} md={4} key={index}>

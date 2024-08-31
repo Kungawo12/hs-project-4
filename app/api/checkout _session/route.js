@@ -29,9 +29,13 @@ export default async function POST(req){
         ],
         success_url: `${req.headers.get('origin')}/result?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${req.headers.get('origin')}/result?session_id={CHECKOUT_SESSION_ID}`,
+        
     }
     
     const checkoutSession = await stripe.checkout.sessions.create(params)
+
+    // params.success_url = `${req.headers.get('origin')}/result?session_id=${checkoutSession.id}`;
+    // params.cancel_url = `${req.headers.get('origin')}/result?session_id=${checkoutSession.id}`; 
 
     return NextResponse.json(checkoutSession,{
         status: 200,

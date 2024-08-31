@@ -5,7 +5,7 @@ import { AppBar, Button, Container, Toolbar, Typography,Box,Grid,Paper} from "@m
 import { useTheme } from "./themeContext";
 import Head from "next/head";
 import { useRouter } from 'next/navigation';
-import ThemeToggle from "./lightDarkMode";
+import LightDark from "./lightDarkMode";
 
 export default function Home() {
     const { isLightMode } = useTheme();
@@ -28,7 +28,7 @@ export default function Home() {
                 <Typography variant="h6" style={{flexGrow:1}}>
                     MIN Flashcard
                 </Typography>
-                <ThemeToggle />
+                <LightDark/>
                 </Toolbar>
             </AppBar>
             <Box position="relative" height={700}>
